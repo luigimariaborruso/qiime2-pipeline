@@ -10,7 +10,7 @@ This repository provides a general QIIME2 workflow used across multiple studies.
 
 1. **Rosy Discolouration in an Alpine Chapel: Beyond Salt Dependence**  
    Manuscript in preparation.  
-   Target gene: **[baterial 16S rRNA gene, archeal 16S rRNA gene and funfal ITS2 region]**  
+   Target gene: ** baterial 16S rRNA gene, archeal 16S rRNA gene and fungal ITS2 region **  
    Notes: based on the general pipeline with minor study-specific modifications.
 
 2. **Article 2**  
