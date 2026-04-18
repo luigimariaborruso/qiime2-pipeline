@@ -2,6 +2,8 @@
 
 # COI amplicon pipeline
 
+set -euo pipefail
+
 # Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_COI.qza \
