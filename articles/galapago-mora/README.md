@@ -1,5 +1,7 @@
 # Deciphering the rhizosphere microbial and fauna diversity and ecological interactions of *Rubus niveus*: the top invasive threat in Galápagos
 
+Marzanni A, Landolfi M, Tiziani R, Bombardelli S, Celi D, Pittertschatscher M, Buttarelli A, Bruni S, Pecchioni E, Perito B, Cnudde V, Cappitelli F, Mimmo T, Villa F, Borruso L (YEAR). *Journal Name* **Volume**: pages.  
+ 
 **Status:** Manuscript in preparation
 
 ## Target genes
