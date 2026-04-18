@@ -1,17 +1,17 @@
 # qiime2-pipeline
 
-General QIIME2 workflows for amplicon sequencing data analysis across different studies and target markers.
+This repository provides reusable QIIME2 workflows for amplicon sequencing data analysis across multiple studies and target markers.
 
 ## General workflow
 
-The general workflow is available here:
+A general workflow template is available in:
 
 - [`general_workflow/README.md`](general_workflow/README.md)
 
 ## Study-specific implementations
 
-Study-specific workflows and parameter settings are organized in the [`articles/`](articles/) directory.
+Study-specific workflows are organized in the [`articles/`](articles/) directory.
 
-Each article folder contains:
-- a `README.md` file with study information
-- a `parameters.md` file with study-specific settings
+Each article-specific subdirectory contains:
+- `README.md`, summarizing the study reference, target marker, and workflow structure
+- `pipeline.sh`, providing the corresponding bash workflow implementation
