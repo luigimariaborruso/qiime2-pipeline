@@ -3,6 +3,8 @@
 # Rosy Discolouration in an Alpine Chapel: Beyond Salt Dependence
 # Target genes: bacterial 16S rRNA gene, archaeal 16S rRNA gene, and fungal ITS2 region
 
+set -euo pipefail
+
 ## 16S rRNA bacterial dataset
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_16S_bac.qza \
