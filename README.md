@@ -1,6 +1,6 @@
 # General QIIME2 workflow for amplicon sequencing data analysis
 
-This document provides a general QIIME2 workflow for the analysis of amplicon sequencing datasets, including bacterial and archaeal p16S rRNA, fungal ITS, and animal COI markers.  
+This document provides a general QIIME2 workflow for the analysis of amplicon sequencing datasets, including bacterial and archaeal 16S rRNA, fungal ITS, and animal COI markers.  
 Study-specific adaptations may involve different target markers, denoising parameters, reference databases, taxonomic classifiers, and output file names.
 
 ## Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
