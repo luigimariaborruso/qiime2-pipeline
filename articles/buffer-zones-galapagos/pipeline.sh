@@ -1,9 +1,6 @@
 #!/bin/bash
 
 # COI amplicon pipeline
-# Article: Island Buffer Zones Enhance Soil Mesofaunal Diversity and Trophic Complexity in a Human-Modified Oceanic Island (Galápagos)
-
-set -euo pipefail
 
 # Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 qiime dada2 denoise-paired \
