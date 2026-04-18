@@ -1,8 +1,8 @@
-# Island Buffer Zones Enhance Soil Mesofaunal Diversity and Trophic Complexity in a Human-Modified Oceanic Island (Galápagos)
+# Barrier or bridge? Testing buffer zones in mitigating agrochemical spread and soil biodiversity shifts in Isabela Island (Galápagos)
 
-Riviere S, Bouaicha O, Fracasso I, Trevisan F, Keiblinger K, Gerzabek MH, Jäger H, Chaves JA, Cesco S, Zehetner F, Mimmo T, Borruso LM.
+Riviere S, Bouaicha O, Fracasso I, Trevisan F, Keiblinger K, Gerzabek MH, Jäger H, Chaves JA, Cesco S, Zehetner F, Mimmo T, Borruso L (2026).
 
-*Agriculture, Ecosystems and Environment* **405** (2026): 110372.  
+*Agriculture, Ecosystems and Environment* **405**: 110372.  
 https://doi.org/10.1016/j.agee.2026.110372
 
 ## Target gene
