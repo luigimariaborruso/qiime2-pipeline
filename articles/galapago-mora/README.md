@@ -1,19 +1,12 @@
-# Deciphering the rhizosphere microbial and fauna diversity and ecological interactions of *Rubus niveus*: the top invasive threat in Galápagos
+#!/bin/bash
 
-Riviere S, Fracasso1 I, Tiziani1 R, Trevisan F, Bouaicha O, Keiblinger K, Gerzabek MH, Chaves JA, Zehetner F, Jäger H, Mimmo T and Borruso L
- 
-**Status:** Manuscript in preparation
+# Deciphering the rhizosphere microbial and fauna diversity and ecological interactions of Rubus niveus:
+# the top invasive threat in Galapagos
 
-## Target genes
-- bacterial 16S rRNA gene
-- fungal ITS2 region
-- soil animal COI gene
+set -euo pipefail
 
-## Bacterial 16S rRNA dataset
-
-### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
-
-```bash
+# Bacterial 16S rRNA dataset
+# Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_16S_bac.qza \
   --p-trim-left-f 21 \
@@ -27,22 +20,16 @@ qiime dada2 denoise-paired \
   --p-max-ee-f 2 \
   --p-max-ee-r 2 \
   --verbose
-```
 
-### Step 2. De novo clustering at 97% sequence identity with VSEARCH
-
-```bash
+# Step 2. De novo clustering at 97% sequence identity with VSEARCH
 qiime vsearch cluster-features-de-novo \
   --i-table table_16S_bac.qza \
   --i-sequences rep-seqs_16S_bac.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-16S-dn-97_bac.qza \
   --o-clustered-sequences rep-seqs-16S-dn-97_bac.qza
-```
 
-### Step 3. Taxonomic assignment with the SILVA v138-99 classifier
-
-```bash
+# Step 3. Taxonomic assignment with the SILVA v138-99 classifier
 qiime feature-classifier classify-sklearn \
   --i-classifier silva-v138-99-nb-classifier.qza \
   --i-reads rep-seqs-16S-dn-97_bac.qza \
@@ -50,13 +37,9 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
-```
 
-## Fungal ITS2 dataset
-
-### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
-
-```bash
+# Fungal ITS2 dataset
+# Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_ITS.qza \
   --p-trim-left-f 21 \
@@ -70,22 +53,16 @@ qiime dada2 denoise-paired \
   --p-max-ee-f 2 \
   --p-max-ee-r 2 \
   --verbose
-```
 
-### Step 2. De novo clustering at 97% sequence identity with VSEARCH
-
-```bash
+# Step 2. De novo clustering at 97% sequence identity with VSEARCH
 qiime vsearch cluster-features-de-novo \
   --i-table table_ITS.qza \
   --i-sequences rep-seqs_ITS.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-ITS-dn-97.qza \
   --o-clustered-sequences rep-seqs-ITS-dn-97.qza
-```
 
-### Step 3. Taxonomic assignment with the UNITE classifier
-
-```bash
+# Step 3. Taxonomic assignment with the UNITE classifier
 qiime feature-classifier classify-sklearn \
   --i-classifier unite-INSD-v10.0-classifier.qza \
   --i-reads rep-seqs-ITS-dn-97.qza \
@@ -93,13 +70,9 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
-```
 
-## COI dataset (soil animals)
-
-### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
-
-```bash
+# COI dataset (soil animals)
+# Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_COI.qza \
   --p-trim-left-f 20 \
@@ -110,22 +83,16 @@ qiime dada2 denoise-paired \
   --o-representative-sequences rep-seqs_COI.qza \
   --o-denoising-stats denoising-stats_COI.qza \
   --verbose
-```
 
-### Step 2. De novo clustering at 97% sequence identity with VSEARCH
-
-```bash
+# Step 2. De novo clustering at 97% sequence identity with VSEARCH
 qiime vsearch cluster-features-de-novo \
   --i-table table_COI.qza \
   --i-sequences rep-seqs_COI.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-COI-dn-97.qza \
   --o-clustered-sequences rep-seqs-COI-dn-97.qza
-```
 
-### Step 3. Taxonomic assignment with a BOLD-based reference classifier
-
-```bash
+# Step 3. Taxonomic assignment with a BOLD-based reference classifier
 qiime feature-classifier classify-sklearn \
   --i-classifier BOLD-classifier.qza \
   --i-reads rep-seqs-COI-dn-97.qza \
@@ -133,4 +100,3 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
-```
