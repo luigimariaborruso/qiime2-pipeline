@@ -1,12 +1,17 @@
 # Rosy Discolouration in an Alpine Chapel: Beyond Salt Dependence
-# Target genes: bacterial 16S rRNA gene, archaeal 16S rRNA gene, and fungal ITS2 region
 
-############################
-# Bacterial 16S rRNA dataset
-############################
+**Status:** Manuscript in preparation
 
-# Denoise paired-end reads with DADA2, trimming primers/adapters
-# and truncating reads based on quality profiles
+## Target genes
+- bacterial 16S rRNA gene
+- archaeal 16S rRNA gene
+- fungal ITS2 region
+
+## Bacterial 16S rRNA dataset
+
+### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
+
+```bash
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_16S_bac.qza \
   --p-trim-left-f 21 \
@@ -20,17 +25,22 @@ qiime dada2 denoise-paired \
   --p-max-ee-f 2 \
   --p-max-ee-r 2 \
   --verbose
+```
 
-# Cluster denoised features de novo at 97% sequence identity
+### Step 2. De novo clustering at 97% sequence identity with VSEARCH
+
+```bash
 qiime vsearch cluster-features-de-novo \
   --i-table table_16S_bac.qza \
   --i-sequences rep-seqs_16S_bac.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-16S-dn-97_bac.qza \
   --o-clustered-sequences rep-seqs-16S-dn-97_bac.qza
+```
 
-# Assign taxonomy to clustered representative sequences
-# using the SILVA v138 classifier
+### Step 3. Taxonomic assignment with the SILVA v138-99 classifier
+
+```bash
 qiime feature-classifier classify-sklearn \
   --i-classifier silva-v138-99-nb-classifier.qza \
   --i-reads rep-seqs-16S-dn-97_bac.qza \
@@ -38,14 +48,13 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
+```
 
+## Archaeal 16S rRNA dataset
 
-############################
-# Archaeal 16S rRNA dataset
-############################
+### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 
-# Denoise paired-end reads with DADA2, trimming primers/adapters
-# and truncating reads based on quality profiles
+```bash
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_16S_arch.qza \
   --p-trim-left-f 21 \
@@ -59,17 +68,22 @@ qiime dada2 denoise-paired \
   --p-max-ee-f 2 \
   --p-max-ee-r 2 \
   --verbose
+```
 
-# Cluster denoised features de novo at 97% sequence identity
+### Step 2. De novo clustering at 97% sequence identity with VSEARCH
+
+```bash
 qiime vsearch cluster-features-de-novo \
   --i-table table_16S_arch.qza \
   --i-sequences rep-seqs_16S_arch.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-16S-dn-97_arch.qza \
   --o-clustered-sequences rep-seqs-16S-dn-97_arch.qza
+```
 
-# Assign taxonomy to clustered representative sequences
-# using the SILVA v138 classifier
+### Step 3. Taxonomic assignment with the SILVA v138-99 classifier
+
+```bash
 qiime feature-classifier classify-sklearn \
   --i-classifier silva-v138-99-nb-classifier.qza \
   --i-reads rep-seqs-16S-dn-97_arch.qza \
@@ -77,14 +91,13 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
+```
 
+## Fungal ITS2 dataset
 
-######################
-# Fungal ITS2 dataset
-######################
+### Step 1. Denoising, quality filtering, chimera removal, and ASV inference with DADA2
 
-# Denoise paired-end reads with DADA2, trimming primers/adapters
-# and truncating reads based on quality profiles
+```bash
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end_ITS.qza \
   --p-trim-left-f 21 \
@@ -98,17 +111,22 @@ qiime dada2 denoise-paired \
   --p-max-ee-f 2 \
   --p-max-ee-r 2 \
   --verbose
+```
 
-# Cluster denoised features de novo at 97% sequence identity
+### Step 2. De novo clustering at 97% sequence identity with VSEARCH
+
+```bash
 qiime vsearch cluster-features-de-novo \
   --i-table table_ITS.qza \
   --i-sequences rep-seqs_ITS.qza \
   --p-perc-identity 0.97 \
   --o-clustered-table table-ITS-dn-97.qza \
   --o-clustered-sequences rep-seqs-ITS-dn-97.qza
+```
 
-# Assign taxonomy to clustered representative sequences
-# using the UNITE classifier
+### Step 3. Taxonomic assignment with the UNITE classifier
+
+```bash
 qiime feature-classifier classify-sklearn \
   --i-classifier unite-INSD-v10.0-classifier.qza \
   --i-reads rep-seqs-ITS-dn-97.qza \
@@ -116,3 +134,4 @@ qiime feature-classifier classify-sklearn \
   --p-n-jobs -2 \
   --p-reads-per-batch 100000 \
   --verbose
+```
